@@ -12,4 +12,5 @@
 ## about
 
 * https://forge.rust-lang.org/infra/other-installation-methods.html
+* https://rustwiki.org/zh-CN/cargo/getting-started/installation.html
 
