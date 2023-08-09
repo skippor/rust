@@ -18,6 +18,12 @@
 * https://juejin.cn/post/7156102433581383716
 * https://github.com/rustwasm/wasm-pack-template/tree/master
 
+## books
+
+* https://rusty.course.rs/superstar.html
+* https://course.rs/about-book.html
+* https://nomicon.purewhite.io/intro.html
+
 ## about
 
 * https://forge.rust-lang.org/infra/other-installation-methods.html
