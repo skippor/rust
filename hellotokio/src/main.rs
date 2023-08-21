@@ -1,31 +1,31 @@
-extern crate tokio;
+//! A simple client that opens a TCP stream, writes "hello world\n", and closes
+//! the connection.
+//!
+//! To start a server that this client can talk to on port 6142, you can use this command:
+//!
+//!     ncat -l 6142
+//!
+//! And then in another terminal run:
+//!
+//!     cargo run --example hello_world
 
-use tokio::io;
+#![warn(rust_2018_idioms)]
+
+use tokio::io::AsyncWriteExt;
 use tokio::net::TcpStream;
-use tokio::prelude::*;
 
-fn main() {
-    // Parse the address of whatever server we're talking to
-    let addr = "127.0.0.1:6142".parse().unwrap();
-    let stream = TcpStream::connect(&addr);
+use std::error::Error;
 
-    // Following snippets come here...
-    let client = TcpStream::connect(&addr).and_then(|stream| {
-        println!("created stream");
-    
-        //Process stream here
-        io::write_all(stream, "hello world\n").then(|result| {
-            println!("wrote to stream; success={:?}", result.is_ok());
-            Ok(())
-        })
-    })
-    .map_err(|err| {
-        // All tasks must have an 'Error' type of '()'. This forces error
-        // handing and helps avoid silencing failures.
-        println!("connection error = {:?}",err);
-    });
+#[tokio::main]
+pub async fn main() -> Result<(), Box<dyn Error>> {
+    // Open a TCP stream to the socket address.
+    //
+    // Note that this is the Tokio TcpStream, which is fully async.
+    let mut stream = TcpStream::connect("127.0.0.1:6142").await?;
+    println!("created stream");
 
-    println!("About to create the stream and write to it...");
-    tokio::run(client);
-    println!("Stream has been created and written to.");
+    let result = stream.write_all(b"hello world\n").await;
+    println!("wrote to stream; success={:?}", result.is_ok());
+
+    Ok(())
 }
