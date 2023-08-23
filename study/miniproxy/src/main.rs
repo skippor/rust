@@ -1,7 +1,7 @@
 use std::env;
 use std::process;
 
-use xproxy::Config;
+use miniproxy::Config;
 
 fn main() {
     let only_test = env::var("ONLY_TEST").is_ok();
@@ -16,7 +16,7 @@ fn main() {
         process::exit(-1);
     });
 
-    if let Err(e) = xproxy::run(cfg) {
+    if let Err(e) = miniproxy::run(cfg) {
         eprintln!("Application error: {e}");
         process::exit(-1);
     }

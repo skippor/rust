@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "xproxy"
+name = "miniproxy"
 version = "0.1.0"
