@@ -7,8 +7,8 @@ fn main() {
     let only_test = env::var("ONLY_TEST").is_ok();
     if only_test {
         println!("only a test!");
-        miniproxy::test_clap();
-        miniproxy::test_ini();
+        miniproxy::config::test_clap();
+        miniproxy::config::test_ini();
 
         process::exit(0)
     }
