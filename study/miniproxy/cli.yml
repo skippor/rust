@@ -1,0 +1,22 @@
+name: miniproxy
+version: "1.0"
+about: mini proxy for nat traversal
+author: skippor
+
+args:
+    - verbose:
+        help: verbosity level
+        short: v
+        multiple: true
+    - path:
+        help: Target file you want to change
+        short: p
+        takes_value: true
+
+subcommands:
+    - test:
+        about: does testing things
+        args:
+            - list:
+                help: lists test values
+                short: l
