@@ -80,7 +80,7 @@ pub fn test_clap() {
 }
 
 pub fn test_args() {
-    let yml = load_yaml!("../cli.yml");
+    let yml = load_yaml!("cli.yml");
     let matches = App::from_yaml(yml).get_matches();
 
     let _ = match matches.occurrences_of("verbose") {
