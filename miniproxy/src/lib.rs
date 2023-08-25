@@ -1,9 +1,11 @@
 pub mod config;
 
+use std::env;
 use std::error::Error;
 
 pub struct Config {
-    cfg: String
+    cfg: String,
+    debug: bool
 }
 
 impl Config {
@@ -16,8 +18,11 @@ impl Config {
             None => return Err("need a config file")
         };
 
+        let debug = env::var("debug").is_ok();
+
         Ok(Config{
-            cfg
+            cfg,
+            debug
         })
     }
 }
