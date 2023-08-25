@@ -3,6 +3,12 @@ extern crate clap;
 use ini::Ini;
 use clap::{Arg, App, SubCommand, load_yaml};
 
+pub struct ProxyConfig {
+    addr: String,
+    proto: String,
+    debug: bool
+}
+
 pub fn test_ini() {
     let mut conf = Ini::new();
     conf.with_section(Some("User"))
