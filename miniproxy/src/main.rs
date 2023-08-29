@@ -2,7 +2,10 @@ use std::process;
 
 
 fn main() {
-    miniproxy::config::test_clap();
+    let proxy_config = miniproxy::config::build_config().unwrap_or_else(|err| {
+        eprintln!("Problem loading proxy config: {err}");
+        process::exit(1);
+    });
 
-    process::exit(0)
+    println!("config:{:?}", proxy_config);
 }
