@@ -3,9 +3,16 @@ pub mod tunnel;
 pub mod route;
 pub mod crypto;
 
-
-use std::env;
 use std::error::Error;
+use std::collections::HashMap;
+use lazy_static::lazy_static;
+
+lazy_static! {
+    static ref g_config: HashMap<&'static str, Box<config::ProxyConfig>> = {
+        let mut m = HashMap::new();
+        m
+    };
+}
 
 pub fn run(config: config::ProxyConfig) -> Result<(), Box<dyn Error>> {
     println!("run config is {:?}", config);
