@@ -12,6 +12,14 @@ lazy_static! {
         let mut m = HashMap::new();
         m
     };
+    static ref g_route: HashMap<&'static str, &'static str> = {
+        let mut m = HashMap::new();
+        m
+    };
+    static ref g_tunnel: HashMap<&'static str, &'static str> = {
+        let mut m = HashMap::new();
+        m
+    };
 }
 
 pub fn run(config: config::ProxyConfig) -> Result<(), Box<dyn Error>> {
