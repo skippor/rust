@@ -7,15 +7,11 @@ pub mod crypto;
 use std::env;
 use std::error::Error;
 
-pub struct Config {
-    cfg: String,
-    debug: bool
-}
-
-pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
-    println!("run config is {}", config.cfg);
+pub fn run(config: config::ProxyConfig) -> Result<(), Box<dyn Error>> {
+    println!("run config is {:?}", config);
     Ok(())
 }
+
 
 #[cfg(test)]
 mod tests {

@@ -6,6 +6,8 @@ use clap::{Arg, App, SubCommand};
 
 #[derive(Debug)]
 pub struct ProxyConfig {
+    //name: String,
+    //token: String,
     addr: String,
     proto: String,
     debug: bool
@@ -34,7 +36,7 @@ impl ProxyConfig {
     }
 }
 
-pub fn build_config() -> Result<ProxyConfig, &'static str> {
+pub fn build() -> Result<ProxyConfig, &'static str> {
     let matches = App::new("miniproxy")
         .version("1.0.0")
         .author("skippor")
