@@ -10,6 +10,7 @@ pub struct ProxyConfig {
     //token: String,
     addr: String,
     proto: String,
+    //server: bool,
     debug: bool
 }
 
@@ -53,7 +54,7 @@ pub fn build() -> Result<ProxyConfig, &'static str> {
         .subcommand(SubCommand::with_name("client")
                         .about("run as a client")
                         .arg_from_usage("-c, --connect=[ADDRESS] 'server address to connect'")
-                        .arg_from_usage("-s, --service=[SERVICE] 'service to be proxyed by the server'")
+                        .arg_from_usage("-m, --map=[lport:rport] 'service port to be proxyed by the server'")
                     )
         .get_matches();
 
@@ -78,7 +79,7 @@ pub fn build() -> Result<ProxyConfig, &'static str> {
             println!("Run as client, connecting on {addr} ...");
         }
 
-        if let Some(service) = matches.value_of("service") {
+        if let Some(service) = matches.value_of("map") {
             println!("Run as client, service open with {service} ...");
         }
 
